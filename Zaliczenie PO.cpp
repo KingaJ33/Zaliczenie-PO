@@ -112,7 +112,13 @@ private:
 protected:
     string kolor;
 
-
+public:
+    Tusz(int nadajId, string nadajMarke, float nadajCene, int nadajTrwalosc, int nadajWage, bool nadajWodoodp, string nadajKolor)
+        : DoOczu(nadajId, nadajMarke, nadajCene, nadajTrwalosc, nadajWage)
+    {
+        czyWodoodporny = nadajWodoodp;
+        kolor = nadajKolor;
+    }
 };
 
 class Cienie : public DoOczu { //I
@@ -121,6 +127,14 @@ private:
 
 protected:
     int iloscKolorow;
+
+public:
+    Cienie(int nadajId, string nadajMarke, float nadajCene, int nadajTrwalosc, int nadajWage, string nadajBarwe, int nadajIloscKolorow)
+        : DoOczu(nadajId, nadajMarke, nadajCene, nadajTrwalosc, nadajWage)
+    {
+        barwy = nadajBarwe;
+        iloscKolorow = nadajIloscKolorow;
+    }
 };
 
 class DoUst : public Kosmetyk { //E
@@ -129,6 +143,14 @@ private:
 
 protected:
     string wlasciwosci;
+
+public:
+    DoUst(int nadajId, string nadajMarke, float nadajCene, string nadajTyp, string nadajWlasciwosci)
+        : Kosmetyk(nadajId, nadajMarke, nadajCene)
+    {
+        typ = nadajTyp;
+        wlasciwosci = nadajWlasciwosci;
+    }
 };
 
 class Szminka : public DoUst { //J
@@ -137,6 +159,14 @@ private:
 
 protected:
     int numerOdcienia;
+
+public:
+    Szminka(int nadajId, string nadajMarke, float nadajCene, string nadajTyp, string nadajWlasciwosci, bool nadajDrobinki, int nadajNumer)
+        : DoUst(nadajId, nadajMarke, nadajCene, nadajTyp, nadajWlasciwosci) 
+    {
+        czyMaDrobinki = nadajDrobinki;
+        numerOdcienia = nadajNumer;
+    }
 };
 
 
