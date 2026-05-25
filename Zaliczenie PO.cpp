@@ -22,6 +22,10 @@ public:
     }
 
     virtual ~Kosmetyk(){}
+
+    virtual void show() {
+        cout << "ID: " << id << " | Marka: " << marka << " | Cena: " << cena << " PLN" << endl;
+    }
 };
 
 class Perfumy : public Kosmetyk { //B
@@ -37,6 +41,11 @@ public:
     {
         nutaZapachowa = nadajNute;
         pojemnoscMl = nadajPojemnosc;
+    }
+    void show() override {
+        cout << "--- PERFUMY ---" << endl;
+        Kosmetyk::show();
+        cout << "Nuta zapachowa: " << nutaZapachowa << " | Pojemnosc: " << pojemnoscMl << " ml" << endl;
     }
 
 };
@@ -55,6 +64,10 @@ public:
         typCery = nadajTypCery;
         waznoscProduktu = nadajWaznosc;
     }
+    virtual void show() override {
+        Kosmetyk::show();
+        cout << "Typ cery: " << typCery << " | Waznosc: " << waznoscProduktu << " miesiecy" << endl;
+    }
 };
 
 class Podklad : public DoTwarzy { //F
@@ -70,6 +83,11 @@ public:
     {
         odcien = nadajOdcien;
         podton = nadajPodton;
+    }
+    void show() override {
+        cout << "--- PODKLAD ---" << endl;
+        DoTwarzy::show();
+        cout << "Odcien: " << odcien << " | Podton: " << podton << endl;
     }
 };
 
@@ -87,6 +105,11 @@ public:
         krycie = nadajKrycie;
         efekt = nadajEfekt;
     }
+    void show() override {
+        cout << "--- KOREKTOR ---" << endl;
+        DoTwarzy::show();
+        cout << "Krycie: " << krycie << " | Efekt: " << efekt << endl;
+    }
 };
 
 class DoOczu : public Kosmetyk { //D
@@ -102,6 +125,10 @@ public:
     {
         trwaloscWgodzinach = nadajTrwalosc;
         wagaWgramach = nadajWage;
+    }
+    virtual void show() override {
+        Kosmetyk::show();
+        cout << "Trwalosc: " << trwaloscWgodzinach << " h | Waga: " << wagaWgramach << " g" << endl;
     }
 };
 
@@ -119,6 +146,11 @@ public:
         czyWodoodporny = nadajWodoodp;
         kolor = nadajKolor;
     }
+    void show() override {
+        cout << "--- TUSZ DO RZES ---" << endl;
+        DoOczu::show();
+        cout << "Wodoodporny: " << (czyWodoodporny ? "Tak" : "Nie") << " | Kolor: " << kolor << endl;
+    }
 };
 
 class Cienie : public DoOczu { //I
@@ -134,6 +166,11 @@ public:
     {
         barwy = nadajBarwe;
         iloscKolorow = nadajIloscKolorow;
+    }
+    void show() override {
+        cout << "--- PALETA CIENI ---" << endl;
+        DoOczu::show();
+        cout << "Barwy: " << barwy << " | Ilosc kolorow: " << iloscKolorow << endl;
     }
 };
 
@@ -151,6 +188,11 @@ public:
         typ = nadajTyp;
         wlasciwosci = nadajWlasciwosci;
     }
+
+    virtual void show() override {
+        Kosmetyk::show(); 
+        cout << "Typ: " << typ << " | Wlasciwosci: " << wlasciwosci << endl; 
+    }
 };
 
 class Szminka : public DoUst { //J
@@ -166,6 +208,12 @@ public:
     {
         czyMaDrobinki = nadajDrobinki;
         numerOdcienia = nadajNumer;
+    }
+
+    void show() override {
+        cout << "--- SZMINKA ---" << endl;
+        DoUst::show(); 
+        cout << "Drobinki: " << (czyMaDrobinki ? "Tak" : "Nie") << " | Odcien nr: " << numerOdcienia << endl;
     }
 };
 
