@@ -2,10 +2,148 @@
 //
 
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+class Kosmetyk { //A
+private:
+    int id;
+
+protected:
+    string marka;
+    float cena;
+
+public:
+    Kosmetyk(int nadajId, string nadajMarke, float nadajCene) {
+        id = nadajId;
+        marka = nadajMarke;
+        cena = nadajCene;
+    }
+
+    virtual ~Kosmetyk(){}
+};
+
+class Perfumy : public Kosmetyk { //B
+private:
+    string nutaZapachowa;
+
+protected:
+    int pojemnoscMl;
+
+public:
+    Perfumy(int nadajId, string nadajMarke, float nadajCene, string nadajNute, int nadajPojemnosc)
+        : Kosmetyk(nadajId, nadajMarke, nadajCene) 
+    {
+        nutaZapachowa = nadajNute;
+        pojemnoscMl = nadajPojemnosc;
+    }
+
+};
+
+class DoTwarzy : public Kosmetyk { //C
+private:
+    string typCery;
+
+protected:
+    int waznoscProduktu; // w miesiacach
+
+public:
+    DoTwarzy(int nadajId, string nadajMarke, float nadajCene, string nadajTypCery, int nadajWaznosc)
+        : Kosmetyk(nadajId, nadajMarke, nadajCene)
+    {
+        typCery = nadajTypCery;
+        waznoscProduktu = nadajWaznosc;
+    }
+};
+
+class Podklad : public DoTwarzy { //F
+private:
+    string odcien;
+
+protected:
+    string podton;
+    
+public:
+    Podklad(int nadajId, string nadajMarke, float nadajCene, string nadajTypCery, int nadajWaznosc, string nadajOdcien, string nadajPodton)
+        : DoTwarzy(nadajId, nadajMarke, nadajCene, nadajTypCery, nadajWaznosc)
+    {
+        odcien = nadajOdcien;
+        podton = nadajPodton;
+    }
+};
+
+class Korektor : public DoTwarzy { //G
+private:
+    string krycie;
+
+protected:
+    string efekt;
+
+public:
+    Korektor(int nadajId, string nadajMarke, float nadajCene, string nadajTypCery, int nadajWaznosc, string nadajKrycie, string nadajEfekt)
+        : DoTwarzy(nadajId, nadajMarke, nadajCene, nadajTypCery, nadajWaznosc)
+    {
+        krycie = nadajKrycie;
+        efekt = nadajEfekt;
+    }
+};
+
+class DoOczu : public Kosmetyk { //D
+private:
+  int trwaloscWgodzinach;
+
+protected:
+    int wagaWgramach;
+
+public:
+    DoOczu(int nadajId, string nadajMarke, float nadajCene, int nadajTrwalosc, int nadajWage)
+        : Kosmetyk(nadajId, nadajMarke, nadajCene)
+    {
+        trwaloscWgodzinach = nadajTrwalosc;
+        wagaWgramach = nadajWage;
+    }
+};
+
+class Tusz : public DoOczu { //H
+private:
+    bool czyWodoodporny;
+
+protected:
+    string kolor;
+
+
+};
+
+class Cienie : public DoOczu { //I
+private:
+    string barwy;
+
+protected:
+    int iloscKolorow;
+};
+
+class DoUst : public Kosmetyk { //E
+private:
+    string typ;
+
+protected:
+    string wlasciwosci;
+};
+
+class Szminka : public DoUst { //J
+private:
+    bool czyMaDrobinki;
+
+protected:
+    int numerOdcienia;
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    
+    return 0;
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
