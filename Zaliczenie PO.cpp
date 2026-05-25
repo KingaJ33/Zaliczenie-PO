@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include<vector>
+void Menu();
 
 using namespace std;
 
@@ -217,10 +219,61 @@ public:
     }
 };
 
+void Menu() {
+    cout << "\n  MENU: " << endl;
+    cout << " CD [nazwa] " << endl;
+    cout << " MO " << endl;
+    cout << " SHOW " << endl;
+    cout << " MENU " << endl;
+    cout << " EXIT " << endl;
+}
+
 
 int main()
 {
-    
+    vector<Kosmetyk*> baza;
+
+    string aktualnyWezel = "Kosmetyk";
+    string komenda;
+
+    cout << "BAZA KOSMETYKOW " << endl;
+    Menu();
+
+    while (true) {
+        cout << aktualnyWezel;
+        cin >> komenda;
+
+        if (komenda == "EXIT") {
+            cout << "Koniec programu " << endl;
+            break;
+        }
+        else if (komenda == "CD") {
+            string gdzieSkoczyc;
+            cin >> gdzieSkoczyc;
+            aktualnyWezel = gdzieSkoczyc; 
+        }
+        else if (komenda == "MO") {
+            if (aktualnyWezel == "Podklad") {
+                baza.push_back(new Podklad(1, "MAC", 150.0, "Mieszana", 12, "NC20", "Cieply"));
+                cout << "Dodano nowy Podklad do bazy " << endl;
+            }
+            else if (aktualnyWezel == "Szminka") {
+                baza.push_back(new Szminka(2, "Dior", 200.0, "Matowa", "Trwala", false, 999));
+                cout << "Dodano nowa Szminke do bazy " << endl;
+            }
+            else {
+                cout << "Blad! " << endl;
+            }
+        }
+        else if (komenda == "SHOW") {
+            for (int i = 0; i < baza.size(); i++) {
+                baza[i]->show();
+            }
+        }
+        else {
+            cout << "Nie znam takiej komendy " << endl;
+        }
+    }
     return 0;
 }
 
