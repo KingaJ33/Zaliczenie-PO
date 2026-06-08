@@ -18,11 +18,8 @@ protected:
     float cena;
 
 public:
-    Kosmetyk(string nadajNazweObiektu, int nadajId, string nadajMarke, float nadajCene) {
-        nazwaObiektu = nadajNazweObiektu;
-        id = nadajId;
-        marka = nadajMarke;
-        cena = nadajCene;
+    Kosmetyk(string nadajNazweObiektu, int nadajId, string nadajMarke, float nadajCene)
+        : id(nadajId), nazwaObiektu(nadajNazweObiektu), marka(nadajMarke), cena(nadajCene) {
     }
 
     virtual ~Kosmetyk() {}
